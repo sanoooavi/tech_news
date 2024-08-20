@@ -66,6 +66,8 @@ def scrape_zoomit(start_page=1, end_page=500):
     for page_number in range(start_page, end_page + 1):
         url = f'https://api2.zoomit.ir/editorial/api/articles/browse?sort=Newest&publishPeriod=All&readingTimeRange=All&pageNumber={page_number}&PageSize=20'
         response = requests.get(url)
+        if response.status_code != 200:
+            print(f"could not feth page {page_number}")
         body_dict = response.json()
         count_articles_in_page = len(body_dict['source'])
 

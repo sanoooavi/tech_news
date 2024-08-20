@@ -11,8 +11,8 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'run-scraper-every-day': {
         'task': 'scraperbs4.tasks.run_scraper',
-        'schedule': timedelta(hours=24),
-        'args': (1, 2)
+        'schedule': timedelta(hours=12),
+        'args': (1, 1)
     }
 
 }

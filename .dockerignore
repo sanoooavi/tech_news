@@ -1,0 +1,63 @@
+.env
+.idea
+.gitignore
+docker-compose.yml
+db.sqlite3
+# Ignore Python bytecode
+**/__pycache__
+**/*.pyc
+**/*.pyo
+
+# Ignore virtual environments
+venv/
+.env/
+env/
+.venv/
+
+# Ignore the Django secret key file (if any)
+secret_key.txt
+
+# Ignore database files
+*.sqlite3
+*.db
+
+# Ignore logs
+*.log
+logs/
+**/logs/
+
+# Ignore media and static files (assuming they're not needed in the build context)
+media/
+staticfiles/
+
+# Ignore temporary files and directories
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Ignore system files
+.DS_Store
+*.pem
+
+# Ignore files related to the IDE or editor
+.idea/
+.vscode/
+*.code-workspace
+
+# Ignore the node_modules directory if you're using frontend dependencies
+node_modules/
+
+# Ignore the Dockerfile and docker-compose.yml if you don't want them in the context
+Dockerfile
+.dockerignore
+
+# Ignore any coverage or test files
+htmlcov/
+coverage.xml
+.coverage
+
+# Ignore compiled translations
+*.mo
+locale/

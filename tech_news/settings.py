@@ -126,19 +126,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# celery beat conf
+
+# celery config
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Tehran'
-
-CELERY_BEAT_SCHEDULE = {
-    'run-scraper-every-day': {
-        'task': 'scraperbs4.tasks.run_scraper',
-        'schedule': timedelta(hours=1),  # Runs every 30 seconds
-        'args': (1, 2),  # Arguments for the task
-    },
-    # Add more scheduled tasks here if needed
-}
+CELERY_TASK_DEFAULT_QUEUE = 'default'

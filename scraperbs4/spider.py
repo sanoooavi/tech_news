@@ -72,7 +72,9 @@ def scrape_zoomit(start_page=1, end_page=500):
         count_articles_in_page = len(body_dict['source'])
 
         for i in range(count_articles_in_page):
-            domain = body_dict['source'][i]['slug']
+            domain = body_dict['source'][i].get('slug')
+            if domain is None:
+                continue
             link = urljoin(base_url, domain)
             title, tags, writer, content, published_date = extract_article_data(link)
 

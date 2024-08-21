@@ -11,8 +11,6 @@ services:
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
-    ports:
-      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -73,8 +71,6 @@ services:
   redis:
     image: redis:alpine
     container_name: redis
-    ports:
-      - "6380:6379"
     networks:
       - app_network
 

@@ -4,7 +4,9 @@ import time
 import random
 from urllib.parse import urljoin
 from datetime import datetime
-from news.models import Article, Tag, ArticleTag
+from news.models import Article, Tag
+
+import os
 
 
 def get_month_number(month):
@@ -63,9 +65,15 @@ def extract_article_data(link):
 
 def scrape_zoomit(start_page=1, end_page=500):
     base_url = 'https://www.zoomit.ir/'
+    os.environ.pop('http_proxy', None)
+    os.environ.pop('https_proxy', None)
     for page_number in range(start_page, end_page + 1):
         url = f'https://api2.zoomit.ir/editorial/api/articles/browse?sort=Newest&publishPeriod=All&readingTimeRange=All&pageNumber={page_number}&PageSize=20'
-        response = requests.get(url)
+        response = requests.get(url, headers={
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,'
+                      'image/svg+xml,*/*;q=0.8'
+        })
+        print(response.status_code)
         if response.status_code != 200:
             print(f"could not feth page {page_number}")
         body_dict = response.json()
@@ -96,8 +104,9 @@ def scrape_zoomit(start_page=1, end_page=500):
                         print(f"Article '{title}' created.")
                     else:
                         print(f"Article '{title}' already exists, skipping.")
+
                     for tag_name in tags:
                         tag, _ = Tag.objects.get_or_create(name=tag_name)
-                        ArticleTag.objects.get_or_create(article=article, tag=tag)
+                        article.tags.add(tag)
 
         time.sleep(random.randint(1, 5))

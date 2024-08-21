@@ -9,12 +9,12 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    tags = serializers.SerializerMethodField()
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Article
-        fields = ['title', 'content', 'author', 'tags']
+        fields = ['title', 'content', 'author', 'tags', 'author', 'url', 'created']
 
-    def get_tags(self, obj):
-        tags = Tag.objects.filter(tagged_articles__article=obj)
-        return TagSerializer(tags, many=True).data
+    # def get_tags(self, obj):
+    #     tags = Tag.objects.filter(tagged_articles__article=obj)
+    #     return TagSerializer(tags, many=True).data

@@ -10,6 +10,15 @@ import os
 
 
 def get_month_number(month):
+    """
+       Convert Persian month names to their corresponding month numbers.
+
+       Args:
+           month (str): The Persian name of the month.
+
+       Returns:
+           int: The month number (1-12) or None if the month name isn't recognized.
+       """
     month_mapping = {
         'فروردین': 1,
         'اردیبهشت': 2,
@@ -28,6 +37,15 @@ def get_month_number(month):
 
 
 def extract_article_data(link):
+    """
+        Scrape article data from a given link. This gets the title, tags, author, content, and publication date.
+
+        Args:
+            link (str): The URL of the article to scrape.
+
+        Returns:
+            tuple: Contains title (str), tags (list), writer (str), content (list of paragraphs), and published_date (datetime).
+        """
     try:
         page = BeautifulSoup(requests.get(link).content, "html.parser")
         title = page.find('article').find('h1').text
@@ -64,6 +82,18 @@ def extract_article_data(link):
 
 
 def scrape_zoomit(start_page=1, end_page=500):
+    """
+       Scrape multiple pages of articles from Zoomit and save them to the database.
+
+       This function iterates over a range of pages, scrapes articles from each one, and stores them if they don't already exist in the database. It also adds tags to the articles. The scraping pauses randomly between requests to be polite and avoid getting blocked.
+
+       Args:
+           start_page (int): The first page to start scraping from.
+           end_page (int): The last page to scrape.
+
+       Returns:
+           None
+       """
     base_url = 'https://www.zoomit.ir/'
     os.environ.pop('http_proxy', None)
     os.environ.pop('https_proxy', None)

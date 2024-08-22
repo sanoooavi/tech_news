@@ -29,6 +29,7 @@ djangorestframework==3.15.2
 exceptiongroup==1.2.2
 executing==2.0.1
 filelock==3.15.4
+gunicorn==23.0.0
 hyperlink==21.0.0
 idna==3.7
 incremental==24.7.2
@@ -52,6 +53,8 @@ platformdirs==4.2.2
 prompt_toolkit==3.0.47
 Protego==0.3.1
 psutil==6.0.0
+psycopg==3.2.1
+psycopg2-binary==2.9.9
 ptyprocess==0.7.0
 pure_eval==0.2.3
 pyasn1==0.6.0

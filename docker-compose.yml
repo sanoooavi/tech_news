@@ -2,20 +2,19 @@ version: '3'
 
 services:
   db:
-    image: mysql:8.0
-    container_name: mysql_db
+    image: postgres
+    container_name: postgres_db
     restart: always
     env_file:
       - .env
     environment:
-      MYSQL_DATABASE: ${DATABASE_NAME}
-      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - app_network
-
   web:
     build:
       context: .
@@ -75,7 +74,7 @@ services:
       - app_network
 
 volumes:
-  mysql_data:
+  postgres_data:
 
 networks:
   app_network:

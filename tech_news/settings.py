@@ -145,3 +145,9 @@ CELERY_TASK_DEFAULT_QUEUE = 'default'
 
 # celery flower
 CELERY_FLOWER_PORT = 5555
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}

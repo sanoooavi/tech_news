@@ -29,7 +29,9 @@ djangorestframework==3.15.2
 exceptiongroup==1.2.2
 executing==2.0.1
 filelock==3.15.4
+flower==2.0.1
 gunicorn==23.0.0
+humanize==4.10.0
 hyperlink==21.0.0
 idna==3.7
 incremental==24.7.2
@@ -50,6 +52,7 @@ parsel==1.9.1
 parso==0.8.4
 pexpect==4.9.0
 platformdirs==4.2.2
+prometheus_client==0.20.0
 prompt_toolkit==3.0.47
 Protego==0.3.1
 psutil==6.0.0
@@ -68,6 +71,7 @@ PySocks==1.7.1
 python-crontab==3.2.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
+pytz==2024.1
 pyzmq==26.1.0
 queuelib==1.7.0
 redis==5.0.8

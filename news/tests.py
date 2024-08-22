@@ -5,10 +5,8 @@ from django.test import TestCase
 # Create your tests here.
 import logging
 from django.test import TestCase
-from django.urls import reverse
 from rest_framework.test import APITestCase
-from rest_framework import status
-from .models import ArticleTag, Tag, Article
+from .models import Tag, Article
 from .serializers import *
 
 logger = logging.getLogger(__name__)

@@ -78,16 +78,27 @@ WSGI_APPLICATION = 'tech_news.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 # ! changed the host in .env for docker
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME'),
         'USER': os.getenv('DATABASE_USER'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT'),
+        'HOST': os.getenv('DATABASE_HOST'),  # Replace with your PostgreSQL server's address if necessary
+        'PORT': os.getenv('DATABASE_PORT'),          # Leave empty to use the default PostgreSQL port (usually 5432)
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('DATABASE_NAME'),
+#         'USER': os.getenv('DATABASE_USER'),
+#         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+#         'HOST': os.getenv('DATABASE_HOST'),
+#         'PORT': os.getenv('DATABASE_PORT'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

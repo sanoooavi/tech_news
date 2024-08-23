@@ -20,11 +20,5 @@ COPY . /app
 # Expose the port that the Django server will run on
 EXPOSE 8000
 
-# Copy entrypoint script into the container
-COPY ./entrypoint.sh /entrypoint.sh
-
-# Make the entrypoint script executable
-RUN chmod +x /entrypoint.sh
-
-# Set the entrypoint to the script
-ENTRYPOINT ["/entrypoint.sh"]
+# Run all commands in a single CMD instruction
+CMD ["sh", "-c", "python manage.py runserver 0.0.0.0:8000 & celery -A tech_news worker -l INFO & celery -A tech_news beat -l INFO & wait"]

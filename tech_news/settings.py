@@ -130,8 +130,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # celery broker config on host
-CELERY_BROKER_URL = '37ae49de-03cc-48f5-ae24-3ef8ad65a501.hsvc.ir:31594'
-CELERY_RESULT_BACKEND = '37ae49de-03cc-48f5-ae24-3ef8ad65a501.hsvc.ir:31594'
+CELERY_BROKER_URL = 'redis://37ae49de-03cc-48f5-ae24-3ef8ad65a501.hsvc.ir:31594'
+CELERY_RESULT_BACKEND = 'redis://37ae49de-03cc-48f5-ae24-3ef8ad65a501.hsvc.ir:31594'
 
 # celery broker config for docker
 # CELERY_BROKER_URL = 'redis://redis:6379/0'

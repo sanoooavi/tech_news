@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+zll6*9=wve#+n0pv=#lx$&dvbskboqz&y7=_2jfg*w71_@3sm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','tech-news-zoomit.darkube.app']
 
 # Application definition
 

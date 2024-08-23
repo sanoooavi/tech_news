@@ -1,0 +1,17 @@
+FROM python:3.10
+
+
+RUN groupadd -r celeryuser && useradd -r -g celeryuser celeryuser
+
+
+WORKDIR /app/
+ADD ./requirements.txt ./
+RUN pip install -r ./requirements.txt
+ADD ./ ./
+
+
+RUN chown -R celeryuser:celeryuser /app
+USER celeryuser
+
+
+ENTRYPOINT ["/bin/sh", "-c" , "celery -A tech_news beat -l INFO"]

@@ -21,7 +21,7 @@ COPY . /app
 EXPOSE 8000
 
 # Copy entrypoint script into the container
-COPY entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 
 # Make the entrypoint script executable
 RUN chmod +x /entrypoint.sh

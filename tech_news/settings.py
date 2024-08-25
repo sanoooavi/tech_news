@@ -130,8 +130,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # celery broker config on host
-CELERY_BROKER_URL = 'redis://:eoe8uxJHzySqytSXNX11hpPJq2sA4BBU@37ae49de-03cc-48f5-ae24-3ef8ad65a501.hsvc.ir:31594'
-CELERY_RESULT_BACKEND = 'redis://:eoe8uxJHzySqytSXNX11hpPJq2sA4BBU@37ae49de-03cc-48f5-ae24-3ef8ad65a501.hsvc.ir:31594'
+CELERY_BROKER_URL = f"redis://:{os.getenv('REDIS_PASSWORD')}@{os.getenv('REDIS_HOST')}:{os.getenv('REDIS_PORT')}"
+CELERY_RESULT_BACKEND = f"redis://:{os.getenv('REDIS_PASSWORD')}@{os.getenv('REDIS_HOST')}:{os.getenv('REDIS_PORT')}"
 
 # celery broker config for docker
 # CELERY_BROKER_URL = 'redis://redis:6379/0'
@@ -147,7 +147,6 @@ CELERY_TASK_DEFAULT_QUEUE = 'default'
 CELERY_FLOWER_PORT = 5555
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
